@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from mainpage.views import index
+from mainpage.views import index, post_detail
 
 urlpatterns = [
     path('', index),

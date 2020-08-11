@@ -13,7 +13,9 @@
     <ul>
         {% for post in articles %}
             <li>
-                <a href="/post/{{ post.id }}/"{{ post.title }} - by {{ post.author.name }} | {{ post.post_date }}
+                <a
+                    href="/post/{{ post.id }}/">{{ post.title }} - by {{ post.author.name }} | {{ post.post_date }}
+                </a>
                     <ul>
                         <li>
                             {{ post.body }}
