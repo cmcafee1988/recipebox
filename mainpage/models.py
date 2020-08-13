@@ -15,7 +15,7 @@ class Author(models.Model):
 
 
 
-class Article(models.Model):
+class Recipe(models.Model):
     title = models.CharField(max_length=50)
     body = models.TextField()
     post_date = models.DateTimeField(default=timezone.now)
