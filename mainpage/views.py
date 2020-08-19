@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 
-from mainpage.models import Recipe
+from mainpage.models import Recipe, Author
 from mainpage.forms import AddAuthorForm
+from mainpage.forms import AddRecipeForm
 
 # Create your views here.
 
@@ -17,11 +19,33 @@ def post_detail(request, post_id):
 
 
 def add_author(request):
-    if request.method =="POST":
-        breakpoint()
+    if request.method == "POST":
         form = AddAuthorForm(request.POST)
-
+        if form.is_valid():
+            data = form.cleaned_data
+            Author.objects.create(
+                name=data.get('name'),
+                bio=data.get('bio')
+            )
+            return HttpResponseRedirect('/')
     form = AddAuthorForm()
     return render(request, "add_author.html", {"form": form})
+
+
+def add_recipe(request):
+    if request.method == "POST":
+        form = AddRecipeForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            Recipe.objects.create(
+                title=data.get('title'),
+                body=data.get('body'),
+                author=data.get('author')
+            )
+            return HttpResponseRedirect('/')
+
+    form = AddRecipeForm()
+    return render(request, "add_recipes.html", {"form": form})
+
 
 

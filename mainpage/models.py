@@ -7,6 +7,7 @@ from django.utils import timezone
 
 class Author(models.Model):
     name = models.CharField(max_length=80)
+    bio = models.TextField(default="asdf")
 
 
     def __str__(self):

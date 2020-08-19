@@ -3,6 +3,7 @@ from mainpage.models import Author
 
 class AddAuthorForm(forms.Form):
     name = forms.CharField(max_length=50)
+    bio = forms.CharField(widget=forms.Textarea)
 
 
 
